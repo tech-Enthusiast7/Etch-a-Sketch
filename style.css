@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #ddd;
+    border: 2px solid black;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+div{
+    background-color: #f0f0f0;
+    width: calc(100% / 16);
+    height: calc(100% / 16);
+    /* max-height: calc(100vh - 220px); */
+    border: 1px solid black;
+    
+}
