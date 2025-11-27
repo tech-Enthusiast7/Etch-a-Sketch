@@ -1,17 +1,38 @@
 let container = document.querySelector(".container");
 
-let gridSize = 16;
-let total = gridSize * gridSize;
+//button asking for number of squares per side for new grid
+let btn = document.createElement("button");
+btn.textContent = "Input Grid";
 
-for (let i = 0; i < total; i++) {
-  const ceil = document.createElement("div");
-  container.appendChild(ceil);
+container.parentElement.prepend(btn);
+
+function createGrid(gridSize) {
+  container.innerHTML = "";
+
+  let total = gridSize * gridSize;
+
+  for (let i = 0; i < total; i++) {
+    const ceil = document.createElement("div");
+    ceil.style.width = `calc(100% / ${gridSize})`;
+    container.appendChild(ceil);
+
+    ceil.addEventListener("mouseenter", () => {
+      ceil.classList.add("hover");
+    });
+    
+  }
 }
+createGrid(16);
 
-let effect = document.querySelectorAll("div");
+btn.addEventListener("click", () => {
+  gridSize = parseInt(window.prompt("Enter the size of Grid(Max: 100): "));
 
-effect.forEach(function (item) {
-  item.addEventListener("mouseenter", () => {
-    item.classList.add("hover");
-  });
+  if (gridSize === null) return;
+
+  if (isNaN(gridSize) || gridSize <= 0 || gridSize > 100) {
+    alert("Please enter a number between 1 & 100");
+    return;
+  }
+
+  createGrid(gridSize);
 });
